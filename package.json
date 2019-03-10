@@ -11,7 +11,8 @@
         }
     ],
     "keywords": [
-        "developpez", "dvlp"
+        "developpez",
+        "dvlp"
     ],
     "license": "ISC",
     "repository": {
@@ -28,23 +29,49 @@
     },
     "main": "bin/index.js",
     "typings": "typings/index.d.ts",
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+            "pre-commit": "npm test",
+            "pre-push": "npm test"
+        }
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
     "scripts": {
+        "cz-commit": "git-cz",
         "lint-ts": "./node_modules/tslint/bin/tslint -t stylish -c tslint.json src/**/*.ts src/*.ts",
         "compile": "rimraf 'dist/' && ./node_modules/.bin/tsc --pretty --project 'tsconfig-dev.json'",
         "pretest": "npm run compile && npm run lint-ts && chmod 764 dist/index.js",
         "test": "NODE_NO_WARNINGS=1 mocha -r ts-node/register src/**/*.spec.ts",
         "posttest": "chmod 664 dist/index.js",
         "prebuild": "rimraf bin/",
-        "build": "./node_modules/.bin/tsc --pretty"
+        "build": "./node_modules/.bin/tsc --pretty",
+        "semantic-release": "semantic-release"
     },
     "dependencies": {},
     "devDependencies": {
+        "@commitlint/cli": "^7.5.2",
+        "@commitlint/config-conventional": "^7.5.0",
+        "@commitlint/travis-cli": "^7.5.2",
         "@types/chai": "^4.1.7",
         "@types/mocha": "^5.2.6",
         "@types/node": "^10.12.0",
         "chai": "^4.2.0",
+        "commitizen": "^3.0.7",
+        "cz-conventional-changelog": "^2.1.0",
+        "husky": "^1.3.1",
         "mocha": "6.0.2",
         "rimraf": "2.6.3",
+        "semantic-release": "^15.13.3",
         "ts-node": "^8.0.3",
         "tslint": "5.13.1",
         "typescript": "3.3.3"
