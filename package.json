@@ -1,0 +1,52 @@
+{
+    "name": "dvlp-commons",
+    "version": "0.0.0-development",
+    "description": "Developpez.com shared code for md-file-converter implementation packages",
+    "author": "marlou <pro@marc-loupias.fr>",
+    "contributors": [
+        {
+            "name": "Marc Loupias",
+            "email": "pro@marc-loupias.fr",
+            "url": "https://github.com/MarcLoupias"
+        }
+    ],
+    "keywords": [
+        "developpez", "dvlp"
+    ],
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MarcLoupias/dvlp-commons"
+    },
+    "bugs": {
+        "url": "https://github.com/MarcLoupias/dvlp-commons/issues"
+    },
+    "homepage": "https://github.com/MarcLoupias/dvlp-commons",
+    "engines": {
+        "node": ">=10.13.0",
+        "npm": ">=6.4.1"
+    },
+    "main": "bin/index.js",
+    "typings": "typings/index.d.ts",
+    "scripts": {
+        "lint-ts": "./node_modules/tslint/bin/tslint -t stylish -c tslint.json src/**/*.ts src/*.ts",
+        "compile": "rimraf 'dist/' && ./node_modules/.bin/tsc --pretty --project 'tsconfig-dev.json'",
+        "pretest": "npm run compile && npm run lint-ts && chmod 764 dist/index.js",
+        "test": "NODE_NO_WARNINGS=1 mocha -r ts-node/register src/**/*.spec.ts",
+        "posttest": "chmod 664 dist/index.js",
+        "prebuild": "rimraf bin/",
+        "build": "./node_modules/.bin/tsc --pretty"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@types/chai": "^4.1.7",
+        "@types/mocha": "^5.2.6",
+        "@types/node": "^10.12.0",
+        "chai": "^4.2.0",
+        "mocha": "6.0.2",
+        "rimraf": "2.6.3",
+        "ts-node": "^8.0.3",
+        "tslint": "5.13.1",
+        "typescript": "3.3.3"
+    }
+}
