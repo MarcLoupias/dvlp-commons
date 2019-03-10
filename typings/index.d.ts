@@ -3,7 +3,7 @@
 // Definitions by: Marc Loupias <https://github.com/MarcLoupias>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-declare class FmQa {
+export declare class FmQa {
     constructor({ createDate, lastUpdateDate, author, keywords }: any);
     author: string;
     keywords: string;
@@ -13,19 +13,19 @@ declare class FmQa {
     getLastUpdateDate(): string;
 }
 
-declare class FmSummaryEnteteTitre {
+export declare class FmSummaryEnteteTitre {
     constructor({ page, article }: any);
     page: string;
     article: string;
 }
 
-declare class FmSummaryEnteteMeta {
+export declare class FmSummaryEnteteMeta {
     constructor({ description, keywords }: any);
     description: string;
     keywords: string;
 }
 
-declare class FmSummaryEntete {
+export declare class FmSummaryEntete {
     constructor({ rubrique, meta, titre, date, miseajour, googleAnalytics, licauteur, lictype, licannee, serveur, chemin, urlhttp, nomfaq }: any);
     rubrique: number;
     googleAnalytics?: string;
@@ -46,13 +46,13 @@ declare class FmSummaryEntete {
     getMiseajour(): string;
 }
 
-declare class FmSummaryEditeur {
+export declare class FmSummaryEditeur {
     constructor({ edversion, edtypexml }: any);
     edversion: string;
     edtypexml: number;
 }
 
-declare class FmSummaryAuteur {
+export declare class FmSummaryAuteur {
     constructor({ name, fullname, url, role }: any);
     name: string;
     fullname: string;
@@ -60,7 +60,7 @@ declare class FmSummaryAuteur {
     role: string;
 }
 
-declare class FmSummary {
+export declare class FmSummary {
     constructor({ auteurs, editeur, entete, edito, licence }: any);
     edito: string;
     licence: string;
